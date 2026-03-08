@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: vetri-deepface
+    runtime: docker
+    repo: https://github.com/dhachinamoorthy/vetri-deepface
+    branch: main
+    plan: free
+    region: oregon
+    healthCheckPath: /health
+    envVars:
+      - key: DEEPFACE_SECRET
+        value: vetri-deepface-s3cr3t-2026
