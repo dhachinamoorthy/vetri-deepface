@@ -19,6 +19,6 @@ COPY app.py .
 # Pre-download models at build time for faster cold starts
 RUN python -c "from deepface import DeepFace; DeepFace.build_model('Facenet512')" || true
 
-EXPOSE 5005
+EXPOSE 10000
 
-CMD ["gunicorn", "--bind", "0.0.0.0:5005", "--timeout", "300", "--workers", "1", "app:app"]
+CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:${PORT:-10000} --timeout 300 --workers 1 app:app"]
